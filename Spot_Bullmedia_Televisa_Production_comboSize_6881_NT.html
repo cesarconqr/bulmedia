@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
-        window.googletag = window.googletag || {cmd: []};
-        googletag.cmd.push(function() {
-            googletag.defineSlot('/6881/televisa.bullmedia/spot', [[500, 400], [600, 500], [800, 600], [640, 480], [2048, 1536], [1200, 675]], 'div-gpt-ad-1720194651097-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
-        });
-    </script>
-</head>
-<body>
-    <!-- /6881/televisa.bullmedia/spot -->
-    <div id='div-gpt-ad-1720194651097-0' style='min-width: 500px; min-height: 400px; position: relative;'>
-        <script>
-            googletag.cmd.push(function() {
-                googletag.display('div-gpt-ad-1720194651097-0');
-            });
-        </script>
-        <img src="https://example.com/your-image.gif" alt="GIF de carga" style="position: absolute; width: 100%; height: 100%; display: none;" id="gif-spot">
-    </div>
-    <script>
+      window.googletag = window.googletag || { cmd: [] };
+
+      googletag.cmd.push(function() {
+        // Definir el slot publicitario
+        var slot = googletag.defineSlot(
+          '/6881/televisa.bullmedia/spot',
+          [[500, 400], [600, 500], [800, 600], [640, 480], [2048, 1536], [1200, 675]],
+          'div-gpt-ad-1720194651097-0'
+        ).addService(googletag.pubads());
+
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+
+        // Escuchar el evento `slotRenderEnded`
         googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-            if (event.isEmpty) {
-                document.getElementById('gif-spot').style.display = 'block';
-            }
+          if (event.slot === slot && event.isEmpty) {
+            // Mostrar la imagen placeholder si no hay anuncio
+            document.getElementById('placeholder-img').style.display = 'block';
+          }
         });
+      });
     </script>
-</body>
+  </head>
+  <body>
+    <!-- Bloque publicitario -->
+    <div id="div-gpt-ad-1720194651097-0" style="min-width: 500px; min-height: 400px;">
+      <script>
+        googletag.cmd.push(function() {
+          googletag.display('div-gpt-ad-1720194651097-0');
+        });
+      </script>
+    </div>
+
+    <!-- Imagen placeholder (oculta por defecto) -->
+    <div id="placeholder-img" style="display: none; min-width: 500px; min-height: 400px;">
+      <img src="https://via.placeholder.com/500x400.png?text=Publicidad+no+disponible" 
+           alt="Publicidad no disponible" style="width: 100%; height: auto;" />
+    </div>
+  </body>
 </html>
