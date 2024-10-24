@@ -1,46 +1,85 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script>
-      window.googletag = window.googletag || { cmd: [] };
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Índice de Páginas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-      googletag.cmd.push(function() {
-        // Definir el slot publicitario
-        var slot = googletag.defineSlot(
-          '/6881/televisa.bullmedia/homebanner',
-          [[970, 50], [970, 250], [1090, 204], [728, 90], [970, 90]],
-          'div-gpt-ad-1719932929836-0'
-        ).addService(googletag.pubads());
+    .container {
+      text-align: center;
+    }
 
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs(); // Colapsa el div si no hay anuncio.
-        googletag.enableServices();
+    h1 {
+      font-size: 2em;
+      color: #333;
+      margin-bottom: 20px;
+    }
 
-        // Escuchar el evento `slotRenderEnded`
-        googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-          if (event.slot === slot && event.isEmpty) {
-            // Mostrar la imagen placeholder si no hay anuncio
-            document.getElementById('placeholder-img').style.display = 'block';
-          }
-        });
-      });
-    </script>
-  </head>
-  <body>
-    <!-- Bloque publicitario -->
-    <div id="div-gpt-ad-1719932929836-0" style="min-width: 728px; min-height: 50px;">
-      <script>
-        googletag.cmd.push(function() {
-          googletag.display('div-gpt-ad-1719932929836-0');
-        });
-      </script>
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2em;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      max-width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .button:active {
+      background-color: #003f8a;
+    }
+
+    @media (min-width: 768px) {
+      .button-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      
+      .button {
+        flex: 1;
+        max-width: 45%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Enlaces a Páginas</h1>
+    <div class="button-container">
+      <a href="6881_Bullmedia_Televisa_comboSize_takeover.html" class="button">Takeover Bullmedia</a>
+      <a href="Banner Lateral Bullmedia Televisa Production_comboSize_6881_NT.html" class="button">Banner Lateral Bullmedia</a>
+      <a href="Home Banner Bullmedia Televisa Production_comboSize_6881_NT_v2.html" class="button">Home Banner Bullmedia</a>
+      <a href="Spot Bullmedia Televisa Production_comboSize_6881_NT.html" class="button">Spot Bullmedia</a>
     </div>
-
-    <!-- Imagen placeholder (oculta por defecto) -->
-    <div id="placeholder-img" style="display: none; min-width: 728px; min-height: 50px;">
-      <img src="https://via.placeholder.com/728x90.png?text=Publicidad+no+disponible" 
-           alt="Publicidad no disponible" style="width: 100%; height: auto;" />
-    </div>
-  </body>
+  </div>
+</body>
 </html>
+
