@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2974260569688094" crossorigin="anonymous"></script>
-		<script>
-		  window.googletag = window.googletag || {cmd: []};
-		  googletag.cmd.push(function() {
-		    googletag.defineSlot('/6881/televisa.bullmedia/homebanner', [[970, 50], [970, 250], [1090, 204], [728, 90], [970, 90]], 'div-gpt-ad-1719932929836-0').addService(googletag.pubads());
-		    googletag.pubads().enableSingleRequest();
-		    googletag.pubads().collapseEmptyDivs();
-		    googletag.enableServices();
-		  });
-		</script>
-	</head>
-	<body>
-		<!-- memazos 2 -->
-		<div id='div-gpt-ad-1719932929836-0' style='min-width: 728px; min-height: 50px;'>
-		  <script>
-		    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1719932929836-0'); });
-		  </script>
-		  <ins class="adsbygoogle" style="display:inline-block;width:970px;height:50px" data-ad-client="ca-pub-2974260569688094" data-ad-slot="6488486998"></ins>
-		  <script>
-		    (adsbygoogle = window.adsbygoogle || []).push({});
-		  </script>
-		</div>
-	</body>
+<head>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+            googletag.defineSlot('/6881/televisa.bullmedia/homebanner', [[970, 50], [970, 250], [1090, 204], [728, 90], [970, 90]], 'div-gpt-ad-1719932929836-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+        });
+
+        // Script para detectar y reemplazar si no se carga la publicidad
+        const placeholderURL = 'https://tu-servidor.com/placeholder/970x50.png'; // Cambia por la URL de tu servidor
+
+        const checkAdContent = (adDiv, width, height) => {
+            if (adDiv.innerHTML.trim() === '') { // Si el contenedor del anuncio está vacío
+                adDiv.innerHTML = `<img src="${placeholderURL}" alt="Ad Placeholder" style="width:${width}px; height:${height}px;">`;
+            }
+        };
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList') {
+                    const adDiv = document.getElementById('div-gpt-ad-1719932929836-0');
+                    checkAdContent(adDiv, 970, 50); // Ajusta a las dimensiones del anuncio
+                }
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+</head>
+<body>
+    <!-- /6881/televisa.bullmedia/homebanner -->
+    <div id='div-gpt-ad-1719932929836-0' style='min-width: 728px; min-height: 50px;'>
+        <script>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1719932929836-0'); });
+        </script>
+    </div>
+</body>
 </html>
