@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
-      window.googletag = window.googletag || { cmd: [] };
-
-      googletag.cmd.push(function() {
-        // Definir el slot publicitario
-        var slot = googletag.defineSlot(
-          '/6881/televisa.bullmedia/takeover',
-          [[800, 500], [1200, 750], [1280, 800]],
-          'div-gpt-ad-1725657264662-0'
-        ).addService(googletag.pubads());
-
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
-
-        // Escuchar el evento `slotRenderEnded`
-        googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-          if (event.slot === slot && event.isEmpty) {
-            // Mostrar la imagen placeholder si no hay anuncio
-            document.getElementById('placeholder-img').style.display = 'block';
-          }
-        });
-      });
-    </script>
-  </head>
-  <body>
-    <!-- Bloque publicitario -->
-    <div id="div-gpt-ad-1725657264662-0" style="min-width: 800px; min-height: 500px;">
-      <script>
+        window.googletag = window.googletag || {cmd: []};
         googletag.cmd.push(function() {
-          googletag.display('div-gpt-ad-1725657264662-0');
+            googletag.defineSlot('/6881/televisa.bullmedia/takeover', [[800, 500], [1200, 750], [1280, 800]], 'div-gpt-ad-1725657264662-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
         });
-      </script>
-    </div>
 
-    <!-- Imagen placeholder (oculta por defecto) -->
-    <div id="placeholder-img" style="display: none; min-width: 800px; min-height: 500px;">
-      <img src="https://via.placeholder.com/800x500.png?text=Publicidad+no+disponible" 
-           alt="Publicidad no disponible" style="width: 100%; height: auto;" />
+        // Script para reemplazar anuncios con una imagen placeholder
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList') {
+                    const adDiv = document.getElementById('div-gpt-ad-1725657264662-0');
+                    if (adDiv && adDiv.innerHTML.trim() === '') { // Si no hay contenido
+                        adDiv.innerHTML = '<img src="https://via.placeholder.com/800x500" alt="Ad Placeholder" style="width:100%; height:auto;">'; // Cambia la URL de la imagen según sea necesario
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+</head>
+<body>
+    <!-- /6881/televisa.bullmedia/takeover -->
+    <div id='div-gpt-ad-1725657264662-0' style='min-width: 800px; min-height: 500px;'>
+        <script>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1725657264662-0'); });
+        </script>
     </div>
-  </body>
+</body>
 </html>
+
