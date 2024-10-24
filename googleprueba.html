@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulación de AdSense con Placeholder Adaptable</title>
+    <title>Simulación de AdSense Secuencial</title>
     <style>
         /* Estilos para los anuncios simulados */
         .fake-ad {
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             margin: 20px auto;
@@ -38,7 +38,7 @@
         <img src="/anuncio1.jpg" alt="Anuncio 1">
     </div>
 
-    <!-- Placeholder adaptable para todos los anuncios -->
+    <!-- Placeholder adaptable para anuncio 1 -->
     <div class="placeholder" id="placeholder-1" style="width: 970px; height: 50px;">
         <img src="/bullmedia.jpg" alt="Placeholder Anuncio 1">
     </div>
@@ -63,30 +63,61 @@
         <img src="/bullmedia.jpg" alt="Placeholder Anuncio 3">
     </div>
 
+    <!-- Anuncio 4 con dimensiones [728, 90] -->
+    <div class="fake-ad" id="div-gpt-ad-4" style="width: 728px; height: 90px;">
+        <img src="/anuncio4.jpg" alt="Anuncio 4">
+    </div>
+
+    <!-- Placeholder adaptable para anuncio 4 -->
+    <div class="placeholder" id="placeholder-4" style="width: 728px; height: 90px;">
+        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 4">
+    </div>
+
+    <!-- Anuncio 5 con dimensiones [970, 90] -->
+    <div class="fake-ad" id="div-gpt-ad-5" style="width: 970px; height: 90px;">
+        <img src="/anuncio5.jpg" alt="Anuncio 5">
+    </div>
+
+    <!-- Placeholder adaptable para anuncio 5 -->
+    <div class="placeholder" id="placeholder-5" style="width: 970px; height: 90px;">
+        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 5">
+    </div>
+
     <script>
-        // Simulación de falla de carga de anuncios después de 3 segundos
+        // Función para mostrar anuncio y cambiarlo por placeholder si no se carga
+        function mostrarAnuncioConPlaceholder(anuncioId, placeholderId, tiempo) {
+            const ad = document.getElementById(anuncioId);
+            const placeholder = document.getElementById(placeholderId);
+
+            ad.style.display = 'flex'; // Muestra el anuncio
+            setTimeout(() => {
+                ad.style.display = 'none'; // Oculta el anuncio
+                placeholder.style.display = 'block'; // Muestra el placeholder
+            }, tiempo); // Cambia al placeholder después del tiempo indicado
+        }
+
+        // Mostrar los anuncios uno por uno
         setTimeout(() => {
-            // Anuncio 1
-            const ad1 = document.getElementById('div-gpt-ad-1');
-            const placeholder1 = document.getElementById('placeholder-1');
-            ad1.style.display = 'none'; // Oculta el anuncio
-            placeholder1.style.display = 'block'; // Muestra el placeholder
+            mostrarAnuncioConPlaceholder('div-gpt-ad-1', 'placeholder-1', 3000); // Anuncio 1 durante 3 segundos
+        }, 0);
 
-            // Anuncio 2
-            const ad2 = document.getElementById('div-gpt-ad-2');
-            const placeholder2 = document.getElementById('placeholder-2');
-            ad2.style.display = 'none'; // Oculta el anuncio
-            placeholder2.style.display = 'block'; // Muestra el placeholder
+        setTimeout(() => {
+            mostrarAnuncioConPlaceholder('div-gpt-ad-2', 'placeholder-2', 3000); // Anuncio 2 durante 3 segundos
+        }, 3000);
 
-            // Anuncio 3
-            const ad3 = document.getElementById('div-gpt-ad-3');
-            const placeholder3 = document.getElementById('placeholder-3');
-            ad3.style.display = 'none'; // Oculta el anuncio
-            placeholder3.style.display = 'block'; // Muestra el placeholder
-        }, 3000); // Simulamos la falla de carga después de 3 segundos
+        setTimeout(() => {
+            mostrarAnuncioConPlaceholder('div-gpt-ad-3', 'placeholder-3', 3000); // Anuncio 3 durante 3 segundos
+        }, 6000);
+
+        setTimeout(() => {
+            mostrarAnuncioConPlaceholder('div-gpt-ad-4', 'placeholder-4', 3000); // Anuncio 4 durante 3 segundos
+        }, 9000);
+
+        setTimeout(() => {
+            mostrarAnuncioConPlaceholder('div-gpt-ad-5', 'placeholder-5', 3000); // Anuncio 5 durante 3 segundos
+        }, 12000);
     </script>
 
 </body>
 </html>
-
 
