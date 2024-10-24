@@ -26,6 +26,34 @@
         });
       });
     </script>
+  </head><!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || { cmd: [] };
+
+      googletag.cmd.push(function() {
+        // Definir el slot publicitario
+        var slot = googletag.defineSlot(
+          '/6881/televisa.bullmedia/homebanner',
+          [[970, 50], [970, 250], [1090, 204], [728, 90], [970, 90]],
+          'div-gpt-ad-1719932929836-0'
+        ).addService(googletag.pubads());
+
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs(); // Colapsa el div si no hay anuncio.
+        googletag.enableServices();
+
+        // Escuchar el evento `slotRenderEnded`
+        googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+          if (event.slot === slot && event.isEmpty) {
+            // Mostrar la imagen placeholder si no hay anuncio
+            document.getElementById('placeholder-img').style.display = 'block';
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <!-- Bloque publicitario -->
