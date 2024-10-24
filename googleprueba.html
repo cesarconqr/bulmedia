@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Prueba de Anuncios</title>
-	<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-	<script>
-	  window.googletag = window.googletag || {cmd: []};
-	  googletag.cmd.push(function() {
-	    googletag.defineSlot('/test/adunit', [[970, 50], [970, 250], [1090, 204], [728, 90], [970, 90]], 'div-gpt-ad-1719932929836-0').addService(googletag.pubads());
-	    googletag.pubads().enableSingleRequest();
-	    googletag.pubads().collapseEmptyDivs();
-	    googletag.enableServices();
-	  });
-	</script>
-</head>
-<body>
-	<!-- /test/adunit -->
-	<div id='div-gpt-ad-1719932929836-0' style='min-width: 728px; min-height: 90px;'>
-	  <script>
-	    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1719932929836-0'); });
-	  </script>
-	</div>
-</body>
+<html>
+  <head>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || { cmd: [] };
+
+      googletag.cmd.push(function() {
+        // Definir el slot publicitario
+        var slot = googletag.defineSlot(
+          '/6881/televisa.bullmedia/homebanner',
+          [[970, 50], [970, 250], [1090, 204], [728, 90], [970, 90]],
+          'div-gpt-ad-1719932929836-0'
+        ).addService(googletag.pubads());
+
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs(); // Colapsa el div si no hay anuncio.
+        googletag.enableServices();
+
+        // Escuchar el evento `slotRenderEnded`
+        googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+          if (event.slot === slot && event.isEmpty) {
+            // Mostrar la imagen placeholder si no hay anuncio
+            document.getElementById('placeholder-img').style.display = 'block';
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Bloque publicitario -->
+    <div id="div-gpt-ad-1719932929836-0" style="min-width: 728px; min-height: 50px;">
+      <script>
+        googletag.cmd.push(function() {
+          googletag.display('div-gpt-ad-1719932929836-0');
+        });
+      </script>
+    </div>
+
+    <!-- Imagen placeholder (oculta por defecto) -->
+    <div id="placeholder-img" style="display: none; min-width: 728px; min-height: 50px;">
+      <img src="https://via.placeholder.com/728x90.png?text=Publicidad+no+disponible" 
+           alt="Publicidad no disponible" style="width: 100%; height: auto;" />
+    </div>
+  </body>
 </html>
