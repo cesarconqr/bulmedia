@@ -44,13 +44,13 @@
             const anuncioActual = anuncios[currentAd];
             
             // Alternar entre el anuncio actual y el placeholder
-            if (anuncioImg.src.includes('bullmedia.jpg')) {
+            if (anuncioImg.src.includes('img/bullmedia.jpg')) {
                 anuncioImg.src = anuncioActual.src;
                 anuncioImg.alt = `Anuncio ${currentAd + 1}`;
                 anuncioContainer.style.width = `${anuncioActual.width}px`;
                 anuncioContainer.style.height = `${anuncioActual.height}px`;
             } else {
-                anuncioImg.src = '/bullmedia.jpg'; // Mostrar el placeholder
+                anuncioImg.src = 'img/bullmedia.jpg; // Mostrar el placeholder
                 anuncioImg.alt = 'Placeholder Bullmedia';
                 anuncioContainer.style.width = `${anuncioActual.width}px`;
                 anuncioContainer.style.height = `${anuncioActual.height}px`;
