@@ -11,25 +11,21 @@
             googletag.enableServices();
         });
 
-        // Script para detectar y reemplazar si no se carga la publicidad
-        const placeholderURL = 'https://tu-servidor.com/placeholder/970x50.png'; // Cambia por la URL de tu servidor
+        // Script para manejar el placeholder y removerlo cuando se cargue la publicidad
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const adDiv = document.getElementById('div-gpt-ad-1719932929836-0');
+            adDiv.style.backgroundColor = "#90EE90"; // Placeholder con fondo verde claro
 
-        const checkAdContent = (adDiv, width, height) => {
-            if (adDiv.innerHTML.trim() === '') { // Si el contenedor del anuncio está vacío
-                adDiv.innerHTML = `<img src="${placeholderURL}" alt="Ad Placeholder" style="width:${width}px; height:${height}px;">`;
-            }
-        };
-
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'childList') {
-                    const adDiv = document.getElementById('div-gpt-ad-1719932929836-0');
-                    checkAdContent(adDiv, 970, 50); // Ajusta a las dimensiones del anuncio
-                }
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (adDiv.innerHTML.trim() !== '') {
+                        adDiv.style.backgroundColor = "transparent"; // Quitar el fondo al cargar el anuncio
+                    }
+                });
             });
-        });
 
-        observer.observe(document.body, { childList: true, subtree: true });
+            observer.observe(adDiv, { childList: true, subtree: true });
+        });
     </script>
 </head>
 <body>
