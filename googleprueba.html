@@ -1,46 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Display a fixed-sized test ad." />
+  <title>Display a test ad</title>
+  <script
+    async
+    src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    window.googletag = window.googletag || { cmd: [] };
+
+    googletag.cmd.push(() => {
+      // Define an ad slot for div with id "banner-ad".
+      googletag
+        .defineSlot("/6355419/Travel/Europe/France/Paris", [300, 250], "banner-ad")
+        .addService(googletag.pubads());
+
+      // Enable the PubAdsService.
+      googletag.enableServices();
+    });
+  </script>
+  <style></style>
+</head>
+<body>
+  <!-- /6355419/Travel/Europe/France/Paris -->
+  <div id='banner-ad' style='min-width: 300px; min-height: 250px;'>
     <script>
-      window.googletag = window.googletag || { cmd: [] };
-
-      googletag.cmd.push(function() {
-        // Definir el slot publicitario
-        var slot = googletag.defineSlot(
-          '/6881/televisa.bullmedia/homebanner',
-          [[970, 50], [970, 250], [1090, 204], [728, 90], [970, 90]],
-          'div-gpt-ad-1719932929836-0'
-        ).addService(googletag.pubads());
-
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs(); // Colapsa el div si no hay anuncio.
-        googletag.enableServices();
-
-        // Escuchar el evento `slotRenderEnded`
-        googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-          if (event.slot === slot && event.isEmpty) {
-            // Mostrar la imagen placeholder si no hay anuncio
-            document.getElementById('placeholder-img').style.display = 'block';
-          }
-        });
-      });
+      googletag.cmd.push(function() { googletag.display('banner-ad'); });
     </script>
-  </head>
-  <body>
-    <!-- Bloque publicitario -->
-    <div id="div-gpt-ad-1719932929836-0" style="min-width: 728px; min-height: 50px;">
-      <script>
-        googletag.cmd.push(function() {
-          googletag.display('div-gpt-ad-1719932929836-0');
-        });
-      </script>
-    </div>
-
-    <!-- Imagen placeholder (oculta por defecto) -->
-    <div id="placeholder-img" style="display: none; min-width: 728px; min-height: 50px;">
-      <img src="https://via.placeholder.com/728x90.png?text=Publicidad+no+disponible" 
-           alt="Publicidad no disponible" style="width: 100%; height: auto;" />
-    </div>
-  </body>
+  </div>
+</body>
 </html>
