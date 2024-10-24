@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulación de AdSense Secuencial</title>
+    <title>Simulación de AdSense Secuencial con Sustitución Dinámica</title>
     <style>
         /* Estilos para los anuncios simulados */
         .fake-ad {
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: center;
             margin: 20px auto;
@@ -16,106 +16,52 @@
         .fake-ad img {
             width: 100%;
             height: auto;
-        }
-
-        /* Placeholder, inicialmente oculto */
-        .placeholder {
-            display: none;
-            margin: 20px auto;
-        }
-
-        .placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Para que la imagen se adapte correctamente */
+            object-fit: cover; /* Para que las imágenes se adapten correctamente */
         }
     </style>
 </head>
 <body>
 
-    <!-- Anuncio 1 con dimensiones [970, 50] -->
-    <div class="fake-ad" id="div-gpt-ad-1" style="width: 970px; height: 50px;">
-        <img src="/anuncio1.jpg" alt="Anuncio 1">
-    </div>
-
-    <!-- Placeholder adaptable para anuncio 1 -->
-    <div class="placeholder" id="placeholder-1" style="width: 970px; height: 50px;">
-        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 1">
-    </div>
-
-    <!-- Anuncio 2 con dimensiones [970, 250] -->
-    <div class="fake-ad" id="div-gpt-ad-2" style="width: 970px; height: 250px;">
-        <img src="/anuncio2.jpg" alt="Anuncio 2">
-    </div>
-
-    <!-- Placeholder adaptable para anuncio 2 -->
-    <div class="placeholder" id="placeholder-2" style="width: 970px; height: 250px;">
-        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 2">
-    </div>
-
-    <!-- Anuncio 3 con dimensiones [1090, 204] -->
-    <div class="fake-ad" id="div-gpt-ad-3" style="width: 1090px; height: 204px;">
-        <img src="/anuncio3.jpg" alt="Anuncio 3">
-    </div>
-
-    <!-- Placeholder adaptable para anuncio 3 -->
-    <div class="placeholder" id="placeholder-3" style="width: 1090px; height: 204px;">
-        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 3">
-    </div>
-
-    <!-- Anuncio 4 con dimensiones [728, 90] -->
-    <div class="fake-ad" id="div-gpt-ad-4" style="width: 728px; height: 90px;">
-        <img src="/anuncio4.jpg" alt="Anuncio 4">
-    </div>
-
-    <!-- Placeholder adaptable para anuncio 4 -->
-    <div class="placeholder" id="placeholder-4" style="width: 728px; height: 90px;">
-        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 4">
-    </div>
-
-    <!-- Anuncio 5 con dimensiones [970, 90] -->
-    <div class="fake-ad" id="div-gpt-ad-5" style="width: 970px; height: 90px;">
-        <img src="/anuncio5.jpg" alt="Anuncio 5">
-    </div>
-
-    <!-- Placeholder adaptable para anuncio 5 -->
-    <div class="placeholder" id="placeholder-5" style="width: 970px; height: 90px;">
-        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 5">
+    <!-- Contenedor de anuncios -->
+    <div class="fake-ad" id="anuncio-container" style="width: 970px; height: 250px;">
+        <img id="anuncio-img" src="/bullmedia.jpg" alt="Placeholder Bullmedia">
     </div>
 
     <script>
-        // Función para mostrar anuncio y cambiarlo por placeholder si no se carga
-        function mostrarAnuncioConPlaceholder(anuncioId, placeholderId, tiempo) {
-            const ad = document.getElementById(anuncioId);
-            const placeholder = document.getElementById(placeholderId);
+        const anuncioContainer = document.getElementById('anuncio-container');
+        const anuncioImg = document.getElementById('anuncio-img');
+        const anuncios = [
+            { src: '/anuncio1.jpg', width: 970, height: 50 },
+            { src: '/anuncio2.jpg', width: 970, height: 250 },
+            { src: '/anuncio3.jpg', width: 1090, height: 204 },
+            { src: '/anuncio4.jpg', width: 728, height: 90 },
+            { src: '/anuncio5.jpg', width: 970, height: 90 }
+        ];
+        let currentAd = 0;
 
-            ad.style.display = 'flex'; // Muestra el anuncio
-            setTimeout(() => {
-                ad.style.display = 'none'; // Oculta el anuncio
-                placeholder.style.display = 'block'; // Muestra el placeholder
-            }, tiempo); // Cambia al placeholder después del tiempo indicado
+        // Función para cambiar entre anuncios y placeholder dinámicamente
+        function cambiarAnuncio() {
+            const anuncioActual = anuncios[currentAd];
+            
+            // Alternar entre el anuncio actual y el placeholder
+            if (anuncioImg.src.includes('bullmedia.jpg')) {
+                anuncioImg.src = anuncioActual.src;
+                anuncioImg.alt = `Anuncio ${currentAd + 1}`;
+                anuncioContainer.style.width = `${anuncioActual.width}px`;
+                anuncioContainer.style.height = `${anuncioActual.height}px`;
+            } else {
+                anuncioImg.src = '/bullmedia.jpg'; // Mostrar el placeholder
+                anuncioImg.alt = 'Placeholder Bullmedia';
+                anuncioContainer.style.width = `${anuncioActual.width}px`;
+                anuncioContainer.style.height = `${anuncioActual.height}px`;
+            }
+
+            // Cambiar al siguiente anuncio (o volver al primero si ya es el último)
+            currentAd = (currentAd + 1) % anuncios.length;
         }
 
-        // Mostrar los anuncios uno por uno
-        setTimeout(() => {
-            mostrarAnuncioConPlaceholder('div-gpt-ad-1', 'placeholder-1', 3000); // Anuncio 1 durante 3 segundos
-        }, 0);
-
-        setTimeout(() => {
-            mostrarAnuncioConPlaceholder('div-gpt-ad-2', 'placeholder-2', 3000); // Anuncio 2 durante 3 segundos
-        }, 3000);
-
-        setTimeout(() => {
-            mostrarAnuncioConPlaceholder('div-gpt-ad-3', 'placeholder-3', 3000); // Anuncio 3 durante 3 segundos
-        }, 6000);
-
-        setTimeout(() => {
-            mostrarAnuncioConPlaceholder('div-gpt-ad-4', 'placeholder-4', 3000); // Anuncio 4 durante 3 segundos
-        }, 9000);
-
-        setTimeout(() => {
-            mostrarAnuncioConPlaceholder('div-gpt-ad-5', 'placeholder-5', 3000); // Anuncio 5 durante 3 segundos
-        }, 12000);
+        // Alternar anuncio y placeholder cada 3 segundos
+        setInterval(cambiarAnuncio, 3000);
     </script>
 
 </body>
