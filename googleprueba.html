@@ -3,57 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulación de AdSense</title>
+    <title>Simulación de AdSense con Placeholder Adaptable</title>
     <style>
-        /* Estilos para simular un anuncio */
+        /* Estilos para los anuncios simulados */
         .fake-ad {
-            width: 300px;
-            height: 250px;
-            background-color: #f1f1f1;
-            border: 2px dashed #ccc;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 18px;
-            color: #333;
-            text-align: center;
             margin: 20px auto;
         }
 
-        /* Estilos para el placeholder */
-        .placeholder {
-            width: 100%;
-            height: 100%;
-            display: none; /* Oculto hasta que se reemplace el anuncio */
-        }
-
-        /* Imagen placeholder simulando una publicidad */
-        .placeholder img {
+        .fake-ad img {
             width: 100%;
             height: auto;
+        }
+
+        /* Placeholder, inicialmente oculto */
+        .placeholder {
+            display: none;
+            margin: 20px auto;
+        }
+
+        .placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Para que la imagen se adapte correctamente */
         }
     </style>
 </head>
 <body>
 
-    <div class="fake-ad" id="div-gpt-ad-1720194651097-0">
-        Simulando Anuncio (AdSense)
+    <!-- Anuncio 1 con dimensiones [970, 50] -->
+    <div class="fake-ad" id="div-gpt-ad-1" style="width: 970px; height: 50px;">
+        <img src="/anuncio1.jpg" alt="Anuncio 1">
     </div>
 
-    <div class="placeholder" id="placeholder">
-        <img src="https://via.placeholder.com/300x250" alt="Ad Placeholder">
+    <!-- Placeholder adaptable para todos los anuncios -->
+    <div class="placeholder" id="placeholder-1" style="width: 970px; height: 50px;">
+        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 1">
+    </div>
+
+    <!-- Anuncio 2 con dimensiones [970, 250] -->
+    <div class="fake-ad" id="div-gpt-ad-2" style="width: 970px; height: 250px;">
+        <img src="/anuncio2.jpg" alt="Anuncio 2">
+    </div>
+
+    <!-- Placeholder adaptable para anuncio 2 -->
+    <div class="placeholder" id="placeholder-2" style="width: 970px; height: 250px;">
+        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 2">
+    </div>
+
+    <!-- Anuncio 3 con dimensiones [1090, 204] -->
+    <div class="fake-ad" id="div-gpt-ad-3" style="width: 1090px; height: 204px;">
+        <img src="/anuncio3.jpg" alt="Anuncio 3">
+    </div>
+
+    <!-- Placeholder adaptable para anuncio 3 -->
+    <div class="placeholder" id="placeholder-3" style="width: 1090px; height: 204px;">
+        <img src="/bullmedia.jpg" alt="Placeholder Anuncio 3">
     </div>
 
     <script>
-        // Simulación de carga de publicidad de AdSense fallida
+        // Simulación de falla de carga de anuncios después de 3 segundos
         setTimeout(() => {
-            const adDiv = document.getElementById('div-gpt-ad-1720194651097-0');
-            const placeholderDiv = document.getElementById('placeholder');
+            // Anuncio 1
+            const ad1 = document.getElementById('div-gpt-ad-1');
+            const placeholder1 = document.getElementById('placeholder-1');
+            ad1.style.display = 'none'; // Oculta el anuncio
+            placeholder1.style.display = 'block'; // Muestra el placeholder
 
-            // Simulamos que no se cargó el anuncio y mostramos el placeholder
-            adDiv.style.display = 'none'; // Ocultamos el anuncio
-            placeholderDiv.style.display = 'block'; // Mostramos el placeholder
-        }, 3000); // Esperamos 3 segundos antes de reemplazar (simulación de falla)
+            // Anuncio 2
+            const ad2 = document.getElementById('div-gpt-ad-2');
+            const placeholder2 = document.getElementById('placeholder-2');
+            ad2.style.display = 'none'; // Oculta el anuncio
+            placeholder2.style.display = 'block'; // Muestra el placeholder
+
+            // Anuncio 3
+            const ad3 = document.getElementById('div-gpt-ad-3');
+            const placeholder3 = document.getElementById('placeholder-3');
+            ad3.style.display = 'none'; // Oculta el anuncio
+            placeholder3.style.display = 'block'; // Muestra el placeholder
+        }, 3000); // Simulamos la falla de carga después de 3 segundos
     </script>
 
 </body>
