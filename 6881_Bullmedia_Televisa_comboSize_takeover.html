@@ -10,14 +10,20 @@
             googletag.enableServices();
         });
 
-        // Script para reemplazar anuncios con una imagen placeholder
+        // Script para detectar y reemplazar si no se carga la publicidad
+        const placeholderURL = 'https://tu-servidor.com/placeholder/800x500.png'; // Cambia por la URL de tu servidor
+
+        const checkAdContent = (adDiv, width, height) => {
+            if (adDiv.innerHTML.trim() === '') { // Si el contenedor del anuncio está vacío
+                adDiv.innerHTML = `<img src="${placeholderURL}" alt="Ad Placeholder" style="width:${width}px; height:${height}px;">`;
+            }
+        };
+
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'childList') {
                     const adDiv = document.getElementById('div-gpt-ad-1725657264662-0');
-                    if (adDiv && adDiv.innerHTML.trim() === '') { // Si no hay contenido
-                        adDiv.innerHTML = '<img src="https://via.placeholder.com/800x500" alt="Ad Placeholder" style="width:100%; height:auto;">'; // Cambia la URL de la imagen según sea necesario
-                    }
+                    checkAdContent(adDiv, 800, 500); // Ajusta a las dimensiones del anuncio
                 }
             });
         });
@@ -29,9 +35,5 @@
     <!-- /6881/televisa.bullmedia/takeover -->
     <div id='div-gpt-ad-1725657264662-0' style='min-width: 800px; min-height: 500px;'>
         <script>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1725657264662-0'); });
-        </script>
-    </div>
-</body>
-</html>
+            googletag.cmd.push(function() {
 
