@@ -10,25 +10,23 @@
             googletag.enableServices();
         });
 
-        // Script para detectar y reemplazar si no se carga la publicidad
-        const placeholderURL = 'https://tu-servidor.com/placeholder/500x400.png'; // Cambia por la URL de tu servidor
+        // Script para manejar el placeholder y removerlo cuando se cargue la publicidad
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const adDiv = document.getElementById('div-gpt-ad-1720194651097-0');
+            adDiv.style.backgroundColor = "#ADD8E6"; // Placeholder con fondo azul claro
 
-        const checkAdContent = (adDiv, width, height) => {
-            if (adDiv.innerHTML.trim() === '') { // Si el contenedor del anuncio está vacío
-                adDiv.innerHTML = `<img src="${placeholderURL}" alt="Ad Placeholder" style="width:${width}px; height:${height}px;">`;
-            }
-        };
-
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'childList') {
-                    const adDiv = document.getElementById('div-gpt-ad-1720194651097-0');
-                    checkAdContent(adDiv, 500, 400); // Ajusta a las dimensiones del anuncio
-                }
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    // Si el contenido de AdSense se carga, removemos el fondo
+                    if (adDiv.innerHTML.trim() !== '') {
+                        adDiv.style.backgroundColor = "transparent"; // Quitar el fondo al cargar el anuncio
+                    }
+                });
             });
-        });
 
-        observer.observe(document.body, { childList: true, subtree: true });
+            // Monitoreamos los cambios en el contenedor del anuncio
+            observer.observe(adDiv, { childList: true, subtree: true });
+        });
     </script>
 </head>
 <body>
@@ -40,4 +38,5 @@
     </div>
 </body>
 </html>
+
 
