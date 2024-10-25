@@ -10,15 +10,15 @@
             googletag.enableServices();
         });
 
-        // Script para manejar el placeholder y removerlo cuando se cargue la publicidad
         window.addEventListener('DOMContentLoaded', (event) => {
             const adDiv = document.getElementById('div-gpt-ad-1725657264662-0');
-            adDiv.style.backgroundColor = "#FFB6C1"; // Placeholder con fondo rosa claro
+            adDiv.style.backgroundImage = "url('https://ciprueba2.com/aura/bullmedia/Spot_Bull.jpg')";
+            adDiv.style.backgroundSize = "cover";
 
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                     if (adDiv.innerHTML.trim() !== '') {
-                        adDiv.style.backgroundColor = "transparent"; // Quitar el fondo al cargar el anuncio
+                        adDiv.style.backgroundImage = "none"; // Eliminar placeholder cuando se cargue el anuncio
                     }
                 });
             });
@@ -36,4 +36,5 @@
     </div>
 </body>
 </html>
+
 
