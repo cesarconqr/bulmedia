@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,21 +11,19 @@
             googletag.enableServices();
         });
 
-        // Script para manejar el placeholder y removerlo cuando se cargue la publicidad
         window.addEventListener('DOMContentLoaded', (event) => {
             const adDiv = document.getElementById('div-gpt-ad-1720194651097-0');
-            adDiv.style.backgroundColor = "#ADD8E6"; // Placeholder con fondo azul claro
+            adDiv.style.backgroundImage = "url('https://ciprueba2.com/aura/bullmedia/Spot_Bull.jpg')";
+            adDiv.style.backgroundSize = "cover";
 
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
-                    // Si el contenido de AdSense se carga, removemos el fondo
                     if (adDiv.innerHTML.trim() !== '') {
-                        adDiv.style.backgroundColor = "transparent"; // Quitar el fondo al cargar el anuncio
+                        adDiv.style.backgroundImage = "none"; // Eliminar placeholder cuando se cargue el anuncio
                     }
                 });
             });
 
-            // Monitoreamos los cambios en el contenedor del anuncio
             observer.observe(adDiv, { childList: true, subtree: true });
         });
     </script>
@@ -38,5 +37,3 @@
     </div>
 </body>
 </html>
-
-
