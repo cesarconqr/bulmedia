@@ -2,6 +2,19 @@
 <html>
 <head>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <style>
+        #div-gpt-ad-1725657264662-0 {
+            min-width: 800px;
+            min-height: 500px;
+            background-image: url('https://ciprueba2.com/aura/bullmedia/takeoverbull.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        #div-gpt-ad-1725657264662-0 .ad-content {
+            opacity: 0;
+        }
+    </style>
     <script>
         window.googletag = window.googletag || {cmd: []};
         googletag.cmd.push(function() {
@@ -10,15 +23,13 @@
             googletag.enableServices();
         });
 
-        window.addEventListener('DOMContentLoaded', (event) => {
+        window.addEventListener('DOMContentLoaded', () => {
             const adDiv = document.getElementById('div-gpt-ad-1725657264662-0');
-            adDiv.style.backgroundImage = "url('https://ciprueba2.com/aura/bullmedia/Spot_Bull.jpg')";
-            adDiv.style.backgroundSize = "cover";
-
+            
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                     if (adDiv.innerHTML.trim() !== '') {
-                        adDiv.style.backgroundImage = "none"; // Eliminar placeholder cuando se cargue el anuncio
+                        adDiv.querySelector('.ad-content').style.opacity = 1;
                     }
                 });
             });
@@ -29,12 +40,15 @@
 </head>
 <body>
     <!-- /6881/televisa.bullmedia/takeover -->
-    <div id='div-gpt-ad-1725657264662-0' style='min-width: 800px; min-height: 500px;'>
-        <script>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1725657264662-0'); });
-        </script>
+    <div id="div-gpt-ad-1725657264662-0">
+        <div class="ad-content">
+            <script>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1725657264662-0'); });
+            </script>
+        </div>
     </div>
 </body>
 </html>
+
 
 
