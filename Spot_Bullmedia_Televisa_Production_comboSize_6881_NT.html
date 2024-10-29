@@ -17,12 +17,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
-            transition: opacity 0.5s ease;
+            z-index: 1; /* Mantiene la imagen encima del contenido */
         }
-        .overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
+        .ad-content {
+            position: relative;
+            z-index: 2; /* Asegura que el contenido de AdSense esté por encima de la imagen */
         }
     </style>
     <script>
@@ -31,21 +30,6 @@
             googletag.defineSlot('/6881/televisa.bullmedia/spot', [[500, 400], [600, 500], [800, 600], [640, 480], [2048, 1536], [1200, 675]], 'div-gpt-ad-1720194651097-0').addService(googletag.pubads());
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const adDiv = document.getElementById('div-gpt-ad-1720194651097-0');
-            const overlay = adDiv.querySelector('.overlay');
-
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (adDiv.innerHTML.trim() !== '') {
-                        overlay.classList.add('hidden');
-                    }
-                });
-            });
-
-            observer.observe(adDiv, { childList: true, subtree: true });
         });
     </script>
 </head>
@@ -61,3 +45,4 @@
     </div>
 </body>
 </html>
+
