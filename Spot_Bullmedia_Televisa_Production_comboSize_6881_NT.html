@@ -4,15 +4,20 @@
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <style>
         #div-gpt-ad-1720194651097-0 {
-            min-width: 500px;
-            min-height: 400px;
             background-image: url('https://ciprueba2.com/aura/bullmedia/Spot_Bull.jpg');
             background-size: cover;
             background-position: center;
+            min-width: 500px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
         }
         #div-gpt-ad-1720194651097-0 .ad-content {
-            opacity: 0; /* Oculta el anuncio inicialmente */
+            width: 100%;
+            height: 100%;
+            opacity: 0;
         }
     </style>
     <script>
@@ -25,11 +30,20 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             const adDiv = document.getElementById('div-gpt-ad-1720194651097-0');
-            
+
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                     if (adDiv.innerHTML.trim() !== '') {
-                        adDiv.querySelector('.ad-content').style.opacity = 1; // Muestra el anuncio encima del placeholder
+                        const adContent = adDiv.querySelector('.ad-content');
+                        adContent.style.opacity = 1;
+                        
+                        const adIframe = adContent.querySelector('iframe');
+                        if (adIframe) {
+                            adIframe.addEventListener('load', () => {
+                                adDiv.style.width = `${adIframe.clientWidth}px`;
+                                adDiv.style.height = `${adIframe.clientHeight}px`;
+                            });
+                        }
                     }
                 });
             });
