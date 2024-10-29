@@ -3,16 +3,18 @@
 <head>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <style>
+        /* Dimensiones máximas para el contenedor de publicidad */
         #div-gpt-ad-1720194651097-0 {
             min-width: 500px;
             min-height: 400px;
             width: 100%;
             height: 100%;
-            max-width: 800px; /* Máximo ancho permitido */
-            max-height: 600px; /* Máximo alto permitido */
+            max-width: 2048px; /* Máximo ancho solicitado */
+            max-height: 1536px; /* Máximo alto solicitado */
             position: relative;
-            overflow: hidden; /* Asegura que la imagen no se salga del contenedor */
+            overflow: hidden;
         }
+        /* Imagen de placeholder */
         .overlay {
             background-image: url('https://ciprueba2.com/aura/bullmedia/Spot_Bull.jpg');
             background-size: cover;
@@ -22,11 +24,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Mantiene la imagen encima del contenido */
+            z-index: 1; /* Mantiene la imagen por encima del contenido */
         }
+        /* Contenido de AdSense */
         .ad-content {
             position: relative;
-            z-index: 2; /* Asegura que el contenido de AdSense esté por encima de la imagen */
+            z-index: 2; /* Coloca el contenido de AdSense en el mismo nivel */
         }
     </style>
     <script>
@@ -39,9 +42,9 @@
     </script>
 </head>
 <body>
-    <!-- /6881/televisa.bullmedia/spot -->
+    <!-- Contenedor de publicidad con dimensiones especificadas -->
     <div id="div-gpt-ad-1720194651097-0">
-        <div class="overlay"></div>
+        <div class="overlay"></div> <!-- Imagen de placeholder -->
         <div class="ad-content">
             <script>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1720194651097-0'); });
