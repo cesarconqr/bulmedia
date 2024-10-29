@@ -3,18 +3,14 @@
 <head>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <style>
-        /* Dimensiones máximas para el contenedor de publicidad */
+        /* Contenedor de publicidad a pantalla completa */
         #div-gpt-ad-1720194651097-0 {
-            min-width: 500px;
-            min-height: 400px;
-            width: 100%;
-            height: 100%;
-            max-width: 2048px; /* Máximo ancho solicitado */
-            max-height: 1536px; /* Máximo alto solicitado */
+            width: 100vw;
+            height: 100vh;
             position: relative;
             overflow: hidden;
         }
-        /* Imagen de placeholder */
+        /* Imagen de placeholder a pantalla completa */
         .overlay {
             background-image: url('https://ciprueba2.com/aura/bullmedia/Spot_Bull.jpg');
             background-size: cover;
@@ -24,7 +20,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Mantiene la imagen por encima del contenido */
+            z-index: 1; /* Coloca la imagen por encima del contenido */
         }
         /* Contenido de AdSense */
         .ad-content {
@@ -35,16 +31,16 @@
     <script>
         window.googletag = window.googletag || {cmd: []};
         googletag.cmd.push(function() {
-            googletag.defineSlot('/6881/televisa.bullmedia/spot', [[500, 400], [600, 500], [800, 600], [640, 480], [2048, 1536], [1200, 675]], 'div-gpt-ad-1720194651097-0').addService(googletag.pubads());
+            googletag.defineSlot('/6881/televisa.bullmedia/spot', [[2048, 1536]], 'div-gpt-ad-1720194651097-0').addService(googletag.pubads());
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
         });
     </script>
 </head>
 <body>
-    <!-- Contenedor de publicidad con dimensiones especificadas -->
+    <!-- Contenedor de publicidad a pantalla completa -->
     <div id="div-gpt-ad-1720194651097-0">
-        <div class="overlay"></div> <!-- Imagen de placeholder -->
+        <div class="overlay"></div> <!-- Imagen de placeholder a pantalla completa -->
         <div class="ad-content">
             <script>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1720194651097-0'); });
