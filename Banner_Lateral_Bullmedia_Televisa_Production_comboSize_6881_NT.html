@@ -3,11 +3,14 @@
 <head>
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <style>
+        /* Contenedor de publicidad con dimensiones específicas */
         #div-gpt-ad-1720194498876-0 {
-            min-width: 120px;
-            min-height: 509px;
+            width: 1090px;
+            height: 250px;
             position: relative;
+            overflow: hidden;
         }
+        /* Imagen de placeholder ajustada a 1090x250 */
         .overlay {
             background-image: url('https://ciprueba2.com/aura/bullmedia/lateralbull.jpg');
             background-size: cover;
@@ -17,26 +20,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Mantiene la imagen encima del contenido */
+            z-index: 1; /* Coloca la imagen por encima del contenido */
         }
+        /* Contenido de AdSense */
         .ad-content {
             position: relative;
-            z-index: 2; /* Asegura que el contenido de AdSense esté por encima de la imagen */
+            z-index: 2; /* Coloca el contenido de AdSense en el mismo nivel */
         }
     </style>
     <script>
         window.googletag = window.googletag || {cmd: []};
         googletag.cmd.push(function() {
-            googletag.defineSlot('/6881/televisa.bullmedia/bannerlateral', [[286, 509], [160, 600], [300, 600], [120, 600]], 'div-gpt-ad-1720194498876-0').addService(googletag.pubads());
+            googletag.defineSlot('/6881/televisa.bullmedia/bannerlateral', [[1090, 250]], 'div-gpt-ad-1720194498876-0').addService(googletag.pubads());
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
         });
     </script>
 </head>
 <body>
-    <!-- /6881/televisa.bullmedia/bannerlateral -->
+    <!-- Contenedor de publicidad con dimensiones 1090x250 -->
     <div id="div-gpt-ad-1720194498876-0">
-        <div class="overlay"></div>
+        <div class="overlay"></div> <!-- Imagen de placeholder ajustada a 1090x250 -->
         <div class="ad-content">
             <script>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1720194498876-0'); });
